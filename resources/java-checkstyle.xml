@@ -5,12 +5,57 @@
 
 <module name="Checker">
     <property name="charset" value="UTF-8"/>
+    <property name="severity" value="warning"/>
+
+    <!-- Common Google exclusions -->
+    <module name="FileTabCharacter">
+        <property name="eachLine" value="true"/>
+    </module>
 
     <module name="TreeWalker">
-        <!-- Base this style guide on Google Java Style -->
-        <module name="GoogleStyle"/>
 
-        <!-- Override indentation to 4 spaces -->
+        <!-- === GOOGLE RULES (copied subset) === -->
+        <module name="OuterTypeFilename"/>
+        <module name="IllegalTokenText">
+            <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
+            <property name="format" value="\\u00(09|0(a|A)|0(c|C)|0(d|D)|22|27|5(C|c))"/>
+            <property name="message" value="Avoid using Unicode escapes for special characters"/>
+        </module>
+        <module name="AvoidEscapedUnicodeCharacters">
+            <property name="allowEscapesForControlCharacters" value="true"/>
+            <property name="allowByTailComment" value="true"/>
+            <property name="allowNonPrintableEscapes" value="true"/>
+        </module>
+        <module name="LineLength">
+            <property name="max" value="100"/>
+            <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+        </module>
+        <module name="NeedBraces"/>
+        <module name="LeftCurly"/>
+        <module name="RightCurly"/>
+        <module name="WhitespaceAround"/>
+        <module name="WhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="ParenPad"/>
+        <module name="OperatorWrap"/>
+        <module name="EmptyBlock"/>
+        <module name="EmptyStatement"/>
+        <module name="OneTopLevelClass"/>
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+        <module name="VariableDeclarationUsageDistance"/>
+        <module name="FinalLocalVariable"/>
+        <module name="VisibilityModifier"/>
+        <module name="UnusedImports"/>
+        <module name="AvoidStarImport"/>
+        <module name="MethodName"/>
+        <module name="ParameterName"/>
+        <module name="TypeName"/>
+        <module name="MemberName"/>
+        <module name="LocalVariableName"/>
+
+        <!-- === OVERRIDE INDENTATION TO 4 === -->
         <module name="Indentation">
             <property name="basicOffset" value="4"/>
             <property name="braceAdjustment" value="0"/>
@@ -19,5 +64,6 @@
             <property name="lineWrappingIndentation" value="4"/>
             <property name="arrayInitIndent" value="4"/>
         </module>
+
     </module>
 </module>
